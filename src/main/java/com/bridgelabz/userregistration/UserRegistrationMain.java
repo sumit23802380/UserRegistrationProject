@@ -8,6 +8,6 @@ public class UserRegistrationMain {
         User user = new User();
         user.setFirstName("Sumit");
         user.setLastName("Jangid");
-
+        user.setPhoneNumber("91 8696911813");
     }
 }

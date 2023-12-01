@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 public class User {
     private String firstName;
     private String lastName;
+    private String phoneNumber;
 
     /**
      * @desc : method to return the first name of the user
@@ -77,6 +78,40 @@ public class User {
         String regex = "^[A-Z].{2,}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(lastName);
+        return matcher.matches();
+    }
+
+    /**
+     * @desc : method to get the phone number
+     * @params:
+     * @return : phonenumber string
+     */
+    public String getPhoneNumber(){
+        return this.phoneNumber;
+    }
+
+    /**
+     * @desc : method to set the phone number
+     * @params: phonenumber string
+     * @return : boolean phone number is valid and set or not
+     */
+    public boolean setPhoneNumber(String phoneNumber) {
+        if(validatePhoneNumber(phoneNumber)){
+            this.phoneNumber = phoneNumber;
+            return  true;
+        }
+        System.out.println("Please provide phone number according to rules country code followed with space and 10 digit number " + phoneNumber);
+        return  false;
+    }
+    /**
+     * @desc : method to validate the phone number using regex
+     * @params: string phonenumber
+     * @return : boolean valid phone number or not
+     */
+    private boolean validatePhoneNumber(String phoneNumber){
+        String regex = "^\\d{2}\\s\\d{10}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(phoneNumber);
         return matcher.matches();
     }
 }
