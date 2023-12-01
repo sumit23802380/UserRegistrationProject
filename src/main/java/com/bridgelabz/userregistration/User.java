@@ -10,7 +10,7 @@ public class User {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-
+    private String password;
     /**
      * @desc : method to return the first name of the user
      * @params:
@@ -18,15 +18,6 @@ public class User {
      */
     public String getFirstName(){
         return this.firstName;
-    }
-
-    /**
-     * @desc : method to return the last name of the user
-     * @params:
-     * @return : last name of user
-     */
-    public String getLastName(){
-        return this.lastName;
     }
 
     /**
@@ -44,6 +35,27 @@ public class User {
     }
 
     /**
+     * @desc : method to validate the first name of the user
+     * @params: firstname string
+     * @return : valid or not
+     */
+    private boolean validateFirstName(String firstName){
+        String regex = "^[A-Z].{2,}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(firstName);
+        return matcher.matches();
+    }
+
+    /**
+     * @desc : method to return the last name of the user
+     * @params:
+     * @return : last name of user
+     */
+    public String getLastName(){
+        return this.lastName;
+    }
+
+    /**
      * @desc : method to set the last name of the user
      * @params: string last name of the user
      * @return : true whether the last name is set or not if it is valid or not
@@ -55,18 +67,6 @@ public class User {
         }
         System.out.println("Please provide at least 3 character , with first letter Capital " + lastName);
         return false;
-    }
-
-    /**
-     * @desc : method to validate the first name of the user
-     * @params: firstname string
-     * @return : valid or not
-     */
-    private boolean validateFirstName(String firstName){
-        String regex = "^[A-Z].{2,}$";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(firstName);
-        return matcher.matches();
     }
 
     /**
@@ -103,6 +103,7 @@ public class User {
         System.out.println("Please provide phone number according to rules country code followed with space and 10 digit number " + phoneNumber);
         return  false;
     }
+
     /**
      * @desc : method to validate the phone number using regex
      * @params: string phonenumber
@@ -112,6 +113,41 @@ public class User {
         String regex = "^\\d{2}\\s\\d{10}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(phoneNumber);
+        return matcher.matches();
+    }
+
+    /**
+     * @desc : method to return the password
+     * @params: string password
+     * @return : boolean valid password or not
+     */
+    public String getPassword(){
+        return this.password;
+    }
+
+    /**
+     * @desc : method to set the password
+     * @params: password string
+     * @return : boolean password is valid and set or not
+     */
+    public void setPassword(String password){
+        if(validatePassword(password)){
+            this.password = password;
+        }
+        else{
+            System.out.println("Please provide valid password");
+        }
+    }
+
+    /**
+     * @desc : method to validate the password
+     * @params: password string
+     * @return : boolean password is valid or not
+     */
+    private boolean validatePassword(String password){
+        String regex = "^.{8,}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(password);
         return matcher.matches();
     }
 }

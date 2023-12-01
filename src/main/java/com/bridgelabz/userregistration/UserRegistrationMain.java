@@ -8,6 +8,7 @@ public class UserRegistrationMain {
         User user = new User();
         user.setFirstName("Sumit");
         user.setLastName("Jangid");
-        user.setPhoneNumber("91 8696911813");
+        user.setPhoneNumber("91 6396911813");
+        user.setPassword("12345678");
     }
 }
