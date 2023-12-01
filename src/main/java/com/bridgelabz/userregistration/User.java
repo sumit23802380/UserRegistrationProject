@@ -130,13 +130,13 @@ public class User {
      * @params: password string
      * @return : boolean password is valid and set or not
      */
-    public void setPassword(String password){
+    public boolean setPassword(String password){
         if(validatePassword(password)){
             this.password = password;
+            return true;
         }
-        else{
-            System.out.println("Please provide valid password");
-        }
+        System.out.println("Please provide valid password");
+        return false;
     }
 
     /**
