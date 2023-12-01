@@ -11,6 +11,7 @@ public class User {
     private String lastName;
     private String phoneNumber;
     private String password;
+    private String email;
     /**
      * @desc : method to return the first name of the user
      * @params:
@@ -144,10 +145,43 @@ public class User {
      * @params: password string
      * @return : boolean password is valid or not
      */
-    private boolean validatePassword(String password){
+    private boolean validatePassword(String password) {
         String regex = "^(?=.*[A-Z])(?=.*\\d)(?=.*[^A-Za-z0-9]).{8,}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(password);
+        return matcher.matches();
+    }
+
+    /**
+     * @desc : method to return the email
+     * @params: string email
+     * @return : boolean valid email or not
+     */
+    public String getEmail(){
+        return this.email;
+    }
+    /**
+     * @desc : method to set the email
+     * @params: email string
+     * @return : boolean email is valid and set or not
+     */
+    public boolean setEmail(String email){
+        if(validatePassword(email)){
+            this.email = email;
+            return true;
+        }
+        System.out.println("Please provide valid email");
+        return false;
+    }
+    /**
+     * @desc : method to validate the email
+     * @params: email string
+     * @return : boolean email is valid or not
+     */
+    private boolean validateEmail(String email){
+        String regex = "^[a-zA-Z0-9]+([._%+-]+[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(\\.[a-zA-Z]{2,}){1,2}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
 }
