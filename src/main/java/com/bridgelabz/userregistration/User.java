@@ -145,7 +145,7 @@ public class User {
      * @return : boolean password is valid or not
      */
     private boolean validatePassword(String password){
-        String regex = "^(?=.*[A-Z]).{8,}$";
+        String regex = "^(?=.*[A-Z])(?=.*\\d).{8,}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(password);
         return matcher.matches();
