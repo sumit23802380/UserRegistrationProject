@@ -51,7 +51,9 @@ class UserTest {
      */
     @Test
     void setPassword() {
-
+        assertEquals(false , user.setPassword("1023456789"));
+        assertEquals(true , user.setPassword("Sumit@123"));
+        assertEquals(false , user.setPassword("Sumit1234"));
     }
 
     /**
@@ -59,5 +61,6 @@ class UserTest {
      */
     @Test
     void setEmail() {
+
     }
 }
