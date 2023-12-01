@@ -61,6 +61,9 @@ class UserTest {
      */
     @Test
     void setEmail() {
-
+        assertEquals(false , user.setEmail("abc"));
+        assertEquals(false , user.setEmail("abc@.com.my"));
+        assertEquals(false , user.setEmail("abc123@gmail.a"));
+        assertEquals(false , user.setEmail("abc123@.com"));
     }
 }
